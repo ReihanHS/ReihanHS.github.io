@@ -4,7 +4,7 @@
 <head>
   <!-- Head content will be loaded by include-head.js -->
   <script src="js/include-head.js"></script>
-  <title>Meters to Feet</title>
+  <title>Factorial</title>
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Meters to Feet</h2>
+        <h2>Factorial</h2>
         <!-- <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam</p> -->
       </div><!-- End Section Title -->
 
@@ -96,12 +96,12 @@
 
               <!-- <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200"> -->
                 <div class="row gy-4">
+
                   <div class="col-12 d-flex justify-content-center">
                     <div class="col-md-6 col-lg-4">
-                      <input id="meters" type="number" name="meters" class="form-control text-center" placeholder="Type your Meters" required="">
+                      <input id="number" type="number" name="number" class="form-control text-center" placeholder="Type the number" required="">
                     </div>
                   </div>
-
 
                   <!-- <div class="col-12">
                     <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
@@ -111,18 +111,15 @@
                     <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
                   </div> -->
 
-                  <div class="col-12 text-center">
-                    <!-- <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div> -->
-
-                    <button type="submit" class="btn btn-outline-success" id="convertF">Convert</button>
-                    <button type="submit" class="btn btn-outline-danger" id="clearValues">Clear Values</button>
+                  <div class="col-12 d-flex justify-content-center gap-2 mb-3">
+                    <button type="submit" class="btn btn-outline-success" id="computeFactorial">Compute Factorial</button>
+                    <button type="button" id="clearButton" class="btn btn-outline-danger">Clear Values</button>
                   </div>
-                  <div id="sum-group" class="col-12 d-flex justify-content-center d-none">
-                    <input id="feet" type="number" class="form-control text-center w-auto" placeholder="Feet" readonly>
+                  <div class="col-12 d-flex justify-content-center">
+                    <div class="col-md-6 col-lg-4">
+                      <input id="factorial" type="number" class="form-control text-center d-none" readonly>
+                    </div>
                   </div>
-
                 </div>
               <!-- </form> -->
 
@@ -161,21 +158,30 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    document.getElementById("convertF").addEventListener("click", function computeSum() {
-        let feet, meters;
-        meters = document.getElementById("meters").value*1;
-        feet = (meters * 3.28084);
+    function clearValues() {
+        document.getElementById("number").value = '';
+        document.getElementById("factorial").value = '';
+        document.getElementById("factorial").classList.add("d-none");
+    }
+
+    // Add event listener for clear button
+    document.getElementById("clearButton").addEventListener("click", clearValues);
+
+    document.getElementById("computeFactorial").addEventListener("click", ()=> {
+        let number;
+        number = document.getElementById("number").value*1;
+        let factorial = 1;
+        let index = 1;
         
-        document.getElementById("feet").value = feet;
-        document.getElementById("sum-group").classList.remove("d-none");
+        while (index <= number){
+            factorial = factorial * index
+            index ++;
+        }
+
+        const factorialField = document.getElementById("factorial");
+        factorialField.value = factorial;
+        factorialField.classList.remove("d-none");
     });
-        
-    document.getElementById("clearValues").addEventListener("click", function clearValues() {
-        document.getElementById("feet").value = '';
-        document.getElementById("meters").value = '';
-        document.getElementById("sum-group").classList.add("d-none");
-    });
-    
   </script>
 
 </body>

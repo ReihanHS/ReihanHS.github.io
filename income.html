@@ -113,7 +113,7 @@
 
                   <div class="col-12 d-flex justify-content-center gap-2 mb-3">
                     <button type="submit" class="btn btn-outline-success" id="computeIncomeTax">Compute Income Tax</button>
-                    <button type="button" class="btn btn-outline-danger" onclick="clearValues()">Clear Values</button>
+                    <button type="button" id="clearButton" class="btn btn-outline-danger">Clear Values</button>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
                     <div class="col-md-6 col-lg-4">
@@ -163,6 +163,9 @@
         document.getElementById("incomeTax").value = '';
         document.getElementById("incomeTax").classList.add("d-none");
     }
+
+    // Add event listener for clear button
+    document.getElementById("clearButton").addEventListener("click", clearValues);
 
     document.getElementById("computeIncomeTax").addEventListener("click", ()=> {
         let income, tax;
