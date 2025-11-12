@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("avgofn").classList.add("d-none");
     }
 
-    // Add event listener for clear button
+ 
     document.getElementById("clearButton").addEventListener("click", clearValues);
 
     document.getElementById("computeavgofn").addEventListener("click", ()=> {

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("sumofn").classList.add("d-none");
     }
 
-    // Add event listener for clear button
+    
     document.getElementById("clearButton").addEventListener("click", clearValues);
 
     document.getElementById("computesumofn").addEventListener("click", ()=> {

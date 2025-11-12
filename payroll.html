@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="js/include-head.js"></script>
+  <title>Payroll</title>
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="contact-page">
+
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <div data-include="includes/logo.html"></div>
+
+      <nav id="navmenu" class="navmenu" data-include="nav.html"></nav>
+
+      <div data-include="includes/social-links.html"></div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section id="contact" class="contact section">
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Payroll</h2>
+      </div>
+
+          <div class="col-lg-12">
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+                <div class="row">
+                    <div class="col-md-3 pb-3 ">
+                        <div class="card border-0 shadow-sm form-control bg-secondary">
+                            <div class="card-header bg-dark text-white py-2 ">
+                                <h6 class="mb-0">Add Employee</h6>
+                            </div>
+                            <div class="card-body p-2">
+                                <form id="addEmployeeForm" class="needs-validation" novalidate>
+                                    <div class="mb-1">
+                                        <label for="empName" class="form-label small mb-0">Name</label>
+                                        <input type="text" class="form-control form-control-sm thick-border" id="empName" required>
+                                    </div>
+                                    <div class="row g-1">
+                                        <div class="col-6">
+                                            <label for="daysWorked" class="form-label small mb-0">Days</label>
+                                            <input type="number" class="form-control form-control-sm thick-border" id="daysWorked" min="0" step="0.5" required>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="dailyRate" class="form-label small mb-0">Rate (₱)</label>
+                                            <input type="number" class="form-control form-control-sm thick-border" id="dailyRate" min="0" step="0.01" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="deductionAmount" class="form-label small mb-0">Deduction (₱)</label>
+                                        <input type="number" class="form-control form-control-sm thick-border" id="deductionAmount" min="0" step="0.01">
+                                    </div>
+                                    <div class="d-grid gap-2 mt-3">
+                                        <button type="submit" class="btn btn-sm btn-dark">
+                                            <i class="bi bi-plus-circle me-1"></i> Add Employee
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped table-hover table-bordered border-secondary">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Employee's ID</th>
+                                        <th scope="col">Employee's Name</th>
+                                        <th scope="col">Days Worked</th>
+                                        <th scope="col">Daily Wage</th>
+                                        <th scope="col">Gross Pay</th>
+                                        <th scope="col">Deductions</th>
+                                        <th scope="col">Net Pay</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="employeeTableBody">
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6" class="text-end fw-bold">Total Net Pay:</td>
+                                        <td id="totalNet" class="fw-bold">₱0.00</td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="btnclear" type="button" class="btn btn-warning">Clear Payroll</button>
+                <label for="empid">Employee's ID</label>
+                <input type="number" name="empid" id="empid">
+
+                <button id="btndelete" class="btn btn-danger">Delete Employee</button>
+
+                
+                <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-dark text-light border border-secondary">
+                      <div class="modal-header bg-dark border-secondary">
+                        <h5 class="modal-title" id="confirmModalLabel">Please Confirm</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <h4 id="modalMsg" class="text-light mb-0"></h4>
+                      </div>
+                      <div class="modal-footer bg-dark border-secondary">
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="modalConfirmBtn">Confirm</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="confirmModal2" tabindex="-1" aria-labelledby="confirmModal2Label" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-dark text-light border border-danger">
+                      <div class="modal-header bg-dark border-secondary">
+                        <h5 class="modal-title text-danger" id="confirmModal2Label">Final Warning</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <h4 id="modal2Msg" class="text-light mb-0">Are you absolutely sure?</h4>
+                        <p class="text-muted mt-2">This action cannot be undone.</p>
+                      </div>
+                      <div class="modal-footer bg-dark border-secondary">
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" id="modal2CancelBtn">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="modal2ConfirmBtn"><i class="bi bi-exclamation-triangle me-2"></i>Yes, Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+          </div>
+
+        </div>
+
+      </div> 
+
+    </section>
+    
+
+  </main>
+
+  <footer id="footer" class="footer" data-include="footer.html"></footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+  <script src="js/payroll.js"></script>
+
+</body>
+
+</html>

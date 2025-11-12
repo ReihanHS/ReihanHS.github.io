@@ -9,6 +9,16 @@
 (function() {
   "use strict";
 
+  // Load head content immediately to prevent FOUC
+  (function loadHeadContent() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'includes/head.html', false); // Synchronous request
+    xhr.send();
+    if (xhr.status === 200) {
+      document.head.insertAdjacentHTML('afterbegin', xhr.responseText);
+    }
+  })();
+
   /**
    * Simple HTML include loader
    * Loads content into any element having [data-include="path/to/file.html"]
@@ -147,14 +157,27 @@
    * Animation on scroll function and init
    */
   function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
+    // Only initialize AOS if it hasn't been initialized yet
+    if (typeof AOS !== 'undefined' && !document.body.hasAttribute('data-aos-events') && !window.aosInitialized) {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 0,
+        disable: 'mobile'
+      });
+      window.aosInitialized = true;
+    }
+    // Ensure the page stays at the top after load
+    window.scrollTo(0, 0);
   }
-  window.addEventListener('load', aosInit);
+  
+  // Initialize AOS when the page loads
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', aosInit);
+  } else {
+    aosInit();
+  }
 
   /**
    * Init typed.js

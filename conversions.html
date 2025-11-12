@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <script src="js/include-head.js"></script>
+  <title>Unit Conversions</title>
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+  
+</head>
+
+<body class="contact-page">
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      <div data-include="includes/logo.html"></div>
+      <nav id="navmenu" class="navmenu" data-include="nav.html"></nav>
+      <div data-include="includes/social-links.html"></div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section id="conversions" class="contact section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Unit Conversions</h2>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="contact-form">
+              <div class="row g-3 mb-4">
+                <div class="col-6 col-md-3">
+                  <div class="conversion-option text-center p-3 rounded active" data-type="temperature" data-conversion="celsius-to-fahrenheit" onclick="setActiveConversion('celsius-to-fahrenheit')">
+                    <i class="bi bi-thermometer-half display-6 mb-2"></i>
+                    <h6>°C to °F</h6>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="conversion-option text-center p-3 rounded" data-type="temperature" data-conversion="fahrenheit-to-celsius" onclick="setActiveConversion('fahrenheit-to-celsius')">
+                    <i class="bi bi-thermometer-high display-6 mb-2"></i>
+                    <h6>°F to °C</h6>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="conversion-option text-center p-3 rounded" data-type="length" data-conversion="feet-to-meters" onclick="setActiveConversion('feet-to-meters')">
+                    <i class="bi bi-rulers display-6 mb-2"></i>
+                    <h6>Feet to Meters</h6>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="conversion-option text-center p-3 rounded" data-type="length" data-conversion="meters-to-feet" onclick="setActiveConversion('meters-to-feet')">
+                    <i class="bi bi-rulers display-6 mb-2"></i>
+                    <h6>Meters to Feet</h6>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-4">
+                <div class="col-12">
+                  <div class="input-group">
+                    <input type="number" class="form-control text-center" id="inputValue" placeholder="Enter value">
+                    <span class="input-group-text" id="inputUnit">°C</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row align-items-center mb-4">
+                <div class="col-md-6 text-md-start text-center mb-3 mb-md-0">
+                  <button type="button" class="btn btn-primary me-2" id="convertBtn">Convert</button>
+                  <button type="button" class="btn btn-outline-secondary" id="clearBtn">Clear</button>
+                </div>
+                <div class="col-md-6 text-md-end text-center">
+                  <div class="result-box d-inline-block text-center" id="resultBox">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <div class="display-6 fw-bold d-none" id="resultValue"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer" data-include="footer.html"></footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+  <script src="js/conversions.js"></script>
+</body>
+</html>

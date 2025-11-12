@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("factorial").classList.add("d-none");
     }
 
-    // Add event listener for clear button
     document.getElementById("clearButton").addEventListener("click", clearValues);
 
     document.getElementById("computeFactorial").addEventListener("click", ()=> {
