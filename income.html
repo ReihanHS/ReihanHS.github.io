@@ -117,7 +117,10 @@
                   </div>
                   <div class="col-12 d-flex justify-content-center">
                     <div class="col-md-6 col-lg-4">
-                      <input id="incomeTax" type="number" class="form-control text-center d-none" readonly>
+                      <div class="input-group d-none" id="taxInputGroup">
+                        <span class="input-group-text">₱</span>
+                        <input id="incomeTax" type="number" class="form-control text-center" readonly>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -157,38 +160,8 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <script>
-    function clearValues() {
-        document.getElementById("income").value = '';
-        document.getElementById("incomeTax").value = '';
-        document.getElementById("incomeTax").classList.add("d-none");
-    }
-
-    // Add event listener for clear button
-    document.getElementById("clearButton").addEventListener("click", clearValues);
-
-    document.getElementById("computeIncomeTax").addEventListener("click", ()=> {
-        let income, tax;
-        income = document.getElementById("income").value*1;
-        
-        if (income < 250000) 
-            tax = 0;
-        else if (income <= 400000)
-            tax = (income - 250000) * 0.2;
-        else if (income <= 800000)
-            tax = 30000 + (income - 400000) * 0.25;
-        else if (income <= 2000000)
-            tax = 130000 + (income - 800000) * 0.3;
-        else if (income <= 8000000)
-            tax = 490000 + (income - 2000000) * 0.32;
-        else 
-            tax = 2410000 + (income - 8000000) * 0.35;
-
-        const incomeTaxField = document.getElementById("incomeTax");
-        incomeTaxField.value = tax.toFixed(2);
-        incomeTaxField.classList.remove("d-none");
-    });
-  </script>
+  <!-- External JavaScript File -->
+  <script src="js/income.js"></script>
 
 </body>
 
