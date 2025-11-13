@@ -2,15 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputNumber = document.getElementById('inputNumber');
     const computeBtn = document.getElementById('computeAll');
     const clearBtn = document.getElementById('clearAll');
-    
+    // Thank you Sir ROYTEK for everything
     
     function calculateFactorial(n) {
         if (n < 0) return 'N/A';
         if (n === 0 || n === 1) return 1;
         
         let result = 1;
-        for (let i = 2; i <= n; i++) {
+        let i = 2;
+        while (i <= n) {
             result *= i;
+            i++;
         }
         return result.toLocaleString();
     }
@@ -18,12 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function calculateSum(n) {
         if (n < 1) return 0;
-        return (n * (n + 1) / 2).toLocaleString();
+        let sum = 0;
+        let i = 1;
+        do {
+            sum += i;
+            i++;
+        } while (i <= n);
+        return sum.toLocaleString();
     }
     
     function calculateAverage(n) {
         if (n < 1) return 'N/A';
-        return ((n + 1) / 2).toLocaleString(undefined, {maximumFractionDigits: 2});
+        let sum = 0;
+        for (let i = 1; i <= n; i++) {
+            sum += i;
+        }
+        return (sum / n).toLocaleString(undefined, {maximumFractionDigits: 2});
     }
     
     function updateCalculations() {

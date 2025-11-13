@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let employeeId = 1;
     
-    
+    // Sir ROYTEK the GOAT
     const addEmployeeForm = document.getElementById('addEmployeeForm');
     if (addEmployeeForm) {
         addEmployeeForm.addEventListener('submit', function(e) {
